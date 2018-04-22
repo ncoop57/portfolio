@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchProjects } from '../actions';
 
 class Projects extends Component {
+  componentDidMount() {
+    this.props.fetchProjects();
+  }
+
   render() {
     return (
       <div className = "projects" >
@@ -10,4 +17,4 @@ class Projects extends Component {
   }
 }
 
-export default Projects;
+export default connect(null, { fetchProjects })(Projects);
