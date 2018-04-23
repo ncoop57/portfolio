@@ -14,7 +14,7 @@ class Projects extends Component {
   renderProjects() {
     return _.map(this.props.projects, project => {
       return (
-        <Project name = { project.name } full_name = { project.full_name } key = { project.id } />
+        <Project name = { project.name } full_name = { project.full_name } url = { project.html_url } key = { project.id } />
       );
     }).reverse();
   }
