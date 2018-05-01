@@ -1,24 +1,43 @@
 import _ from 'lodash';
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle,
-  CardSubtitle, Button } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from 'material-ui';
+
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '100%',
+  },
+};
 
 const Project = (props) => {
-  const { name, full_name, url } = props;
+  const { name, full_name, url, classes } = props;
   const icon_src = `https://raw.githubusercontent.com/${full_name}/master/icon.png`;
   return (
-    <Card className = "project shadow p-3">
-      <CardImg
-        top width = "100%"
-        src = { icon_src }
-        onError = { (e) => { e.target.src = "images/default.png" } }
-        alt = "Project Icon" />
-      <CardBody>
-        <CardTitle>{ _.startCase(_.camelCase(name)) }</CardTitle>
-        <Button className = "shadow" color = "primary" href = { url }>View Repo</Button>
-      </CardBody>
+    <Card className = { classes.card }>
+      <CardMedia
+        className = { classes.media }
+        image = { icon_src }
+        onError = { (e) => { e.target.image = "images/default.png" } }
+      />
+      <CardContent>
+        <Typography gutterBottom variant = "headline" component = "h2">
+          { _.startCase(_.camelCase(name)) }
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button variant = "raised" color = "primary">View Repo</Button>
+      </CardActions>
     </Card>
   );
 }
 
-export default Project;
+Project.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Project);
