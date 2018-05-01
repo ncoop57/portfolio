@@ -22,7 +22,7 @@ const Project = (props) => {
       <CardMedia
         className = { classes.media }
         image = { icon_src }
-        onError = { (e) => { e.target.image = "images/default.png" } }
+        onError = { (e) => { console.log("cannot find icon") } }
       />
       <CardContent>
         <Typography gutterBottom variant = "headline" component = "h2">
@@ -30,7 +30,7 @@ const Project = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant = "raised" color = "primary">View Repo</Button>
+        <Button variant = "raised" color = "primary" href = { url }>View Repo</Button>
       </CardActions>
     </Card>
   );
