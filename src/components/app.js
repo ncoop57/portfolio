@@ -5,7 +5,7 @@ import blue from 'material-ui/colors/blue';
 import purple from 'material-ui/colors/purple';
 import CssBaseline from 'material-ui/CssBaseline';
 
-import NavBar from './nav-bar';
+import NavDrawer from './nav-drawer';
 import Projects from './projects';
 import About from './about';
 import Home from './home';
@@ -33,14 +33,16 @@ class App extends Component {
     return (
       <MuiThemeProvider theme = { theme }>
         <CssBaseline />
-        <NavBar />
         <HashRouter>
-          <div className = "container">
-            <Switch>
-              <Route path = "/projects" component = { Projects } />
-              <Route path = "/about" component = { About } />
-              <Route path = "/" component = { Home } />
-            </Switch>
+          <div>
+            <NavDrawer />
+            <div className = "container">
+              <Switch>
+                  <Route path = "/" component = { Home } />
+                  <Route path = "/projects" component = { Projects } />
+                  <Route path = "/about" component = { About } />
+              </Switch>
+            </div>
           </div>
         </HashRouter>
       </MuiThemeProvider>
