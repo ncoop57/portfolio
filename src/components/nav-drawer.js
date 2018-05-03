@@ -3,26 +3,17 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
   Drawer,
   ListItem,
   ListItemIcon,
   ListItemText,
-  DialogTitle
 } from 'material-ui';
 import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
 import PersonIcon from '@material-ui/icons/Person';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 
-import axios from 'axios';
-import qs from 'qs';
-
-const API_URL = "https://script.google.com/macros/s/AKfycbyCZH7bqRLdiiPfRXkIyfDjTOEhpEWFrY7WqTjikrs-VqlycA/exec";
+import EmailDialog from './email-dialog';
 
 const drawerWidth = 240;
 
@@ -42,8 +33,6 @@ class NavDrawer extends Component {
 
     this.state = {
       open: false,
-      email: '',
-      message: ''
     };
   }
 
@@ -53,24 +42,6 @@ class NavDrawer extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
-  }
-
-  handleChange(event) {
-    const { name, value } = event.target;
-    this.setState({[name]: value})
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    let data = {};
-    data.formDataNameOrder = JSON.stringify({email: [this.state.email], message: [this.state.message], color: ['blue'], name: ['Nathan']});
-    data.formGoogleSheetName = "responses";
-    data.formGoogleSendEmail = "";
-    data = qs.stringify(data);
-    axios.post(API_URL, data);
-
-    this.handleClose(); // close dialog box
   }
 
   render() {
@@ -115,31 +86,7 @@ class NavDrawer extends Component {
             <ListItemText primary = "Contact" />
           </ListItem>
         </Drawer>
-        <Dialog
-          open = { this.state.open }
-          onClose = { this.handleClose }
-          aria-labelledby = 'form-dialog-title'
-        >
-          <DialogTitle id = "form-dialog-title">Contact Me</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              To contact me, please enter a return email, your message and press send.
-            </DialogContentText>
-            <form method = "POST" onSubmit = { this.handleSubmit.bind(this) }>
-              Email: <input value = { this.state.email } onChange = { this.handleChange.bind(this) } type = "text" id = "email" name = "email" required />
-              Message: <input value = { this.state.message } onChange = { this.handleChange.bind(this) } type = "text" id = "message" name = "message" required />
-              <input type="submit" value="Submit" />
-            </form>
-            <DialogActions>
-            <Button onClick = { this.handleClose } color="secondary">
-              Cancel
-            </Button>
-            <Button onClick={ this.handleClose } color="primary">
-              Send
-            </Button>
-          </DialogActions>
-          </DialogContent>
-        </Dialog>
+        <EmailDialog open = { this.state.open } onClose = { this.handleClose.bind(this) } />
       </div>
     );
   }
