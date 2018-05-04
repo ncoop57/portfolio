@@ -3,27 +3,39 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import {
+  Divider,
   Drawer,
+  Hidden,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from 'material-ui';
+import IconButton from 'material-ui/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
-import PersonIcon from '@material-ui/icons/Person';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
+import PersonIcon from '@material-ui/icons/Person';
 
 import EmailDialog from './email-dialog';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
   },
   drawerPaper: {
     position: 'fixed',
     width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
   },
 });
 
@@ -45,47 +57,76 @@ class NavDrawer extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, onToggle, open_drawer } = this.props;
+
+    const drawer = (
+      <div>
+        <div className = { classes.drawerHeader }>
+          {/* <IconButton onClick = { onToggle }>
+            <ChevronLeftIcon />
+          </IconButton> */}
+        </div>
+        <Divider />
+        <Link to = "/" style = {{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary = "Home" />
+          </ListItem>
+        </Link>
+        <Link to = "/projects" style = {{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <BuildIcon />
+            </ListItemIcon>
+            <ListItemText primary = "Projects" />
+          </ListItem>
+        </Link>
+        <Link to = "/about" style = {{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText primary = "About Me" />
+          </ListItem>
+        </Link>
+        <ListItem button onClick = { this.handleOpen }>
+          <ListItemIcon>
+            <ContactMailIcon />
+          </ListItemIcon>
+          <ListItemText primary = "Contact" />
+        </ListItem>
+      </div>
+    );
 
     return (
-      <div className = { classes.root }>
-        <Drawer
-          variant = "permanent"
-          classes = {{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <Link to = "/" style={{ textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary = "Home" />
-            </ListItem>
-          </Link>
-          <Link to = "/projects" style={{ textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemIcon>
-                <BuildIcon />
-              </ListItemIcon>
-              <ListItemText primary = "Projects" />
-            </ListItem>
-          </Link>
-          <Link to = "/about" style={{ textDecoration: 'none' }}>
-            <ListItem button>
-              <ListItemIcon>
-                <PersonIcon />
-              </ListItemIcon>
-              <ListItemText primary = "About Me" />
-            </ListItem>
-          </Link>
-          <ListItem button onClick = { this.handleOpen }>
-            <ListItemIcon>
-              <ContactMailIcon />
-            </ListItemIcon>
-            <ListItemText primary = "Contact" />
-          </ListItem>
-        </Drawer>
+      <div>
+        <Hidden mdUp>
+          <Drawer
+            variant = "temporary"
+            anchor = "left"
+            open = { open_drawer }
+            onClose = { onToggle }
+            classes = {{
+              paper: classes.drawerPaper,
+            }}
+          >
+            { drawer }
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation = "css">
+          <Drawer
+            variant = "permanent"
+            open = { open_drawer }
+            onClose = { onToggle }
+            classes = { {
+              paper: classes.drawerPaper,
+            } }
+          >
+            { drawer }
+          </Drawer>
+        </Hidden>
         <EmailDialog open = { this.state.open } onClose = { this.handleClose.bind(this) } />
       </div>
     );
