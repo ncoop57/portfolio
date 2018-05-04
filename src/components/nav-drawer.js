@@ -10,10 +10,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from 'material-ui';
-import IconButton from 'material-ui/IconButton';
 import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PersonIcon from '@material-ui/icons/Person';
 
@@ -22,10 +20,6 @@ import EmailDialog from './email-dialog';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
-  },
   drawerPaper: {
     position: 'fixed',
     width: drawerWidth,
@@ -62,9 +56,6 @@ class NavDrawer extends Component {
     const drawer = (
       <div>
         <div className = { classes.drawerHeader }>
-          {/* <IconButton onClick = { onToggle }>
-            <ChevronLeftIcon />
-          </IconButton> */}
         </div>
         <Divider />
         <Link to = "/" style = {{ textDecoration: 'none' }}>
