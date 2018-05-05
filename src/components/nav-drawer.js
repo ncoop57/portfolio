@@ -17,12 +17,14 @@ import PersonIcon from '@material-ui/icons/Person';
 
 import EmailDialog from './email-dialog';
 
-const drawerWidth = 240;
+export const DRAWER_WIDTH = 240;
 
 const styles = theme => ({
   drawerPaper: {
-    position: 'fixed',
-    width: drawerWidth,
+    width: DRAWER_WIDTH,
+    [theme.breakpoints.up('md')]: {
+      position: 'fixed',
+    },
   },
   drawerHeader: {
     display: 'flex',

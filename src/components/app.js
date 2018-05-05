@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import purple from 'material-ui/colors/purple';
 import CssBaseline from 'material-ui/CssBaseline';
-import { withStyles } from 'material-ui/styles';
 
-import NavDrawer from './nav-drawer';
+import NavDrawer, { DRAWER_WIDTH } from './nav-drawer';
 import NavBar from './nav-bar';
 import Projects from './projects';
 import About from './about';
@@ -32,7 +31,7 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-  appFrame: {
+  root: {
     flexGrow: 1,
     zIndex: 1,
     overflow: 'hidden',
@@ -40,15 +39,14 @@ const styles = theme => ({
     display: 'flex',
     width: '100%',
   },
+  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 8,
     backgroundColor: theme.palette.background.dark,
     padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    [theme.breakpoints.up('md')]: {
+      marginLeft: DRAWER_WIDTH,
+    },
   },
 });
 
@@ -71,22 +69,19 @@ class App extends Component {
       <MuiThemeProvider theme = { theme }>
         <CssBaseline />
         <HashRouter>
-          <div className = { classes.appFrame }>
+          <div className = { classes.root }>
             <NavBar onToggle = { this.handleDrawerToggle }/>
             <NavDrawer
               onToggle = { this.handleDrawerToggle }
               open_drawer = { this.state.open_drawer }
             />
-            <main
-              className = { classes.content }
-            >
-              <div className = "container">
-                <Switch>
-                    <Route path = "/projects" component = { Projects } />
-                    <Route path = "/about" component = { About } />
-                    <Route path = "/" component = { Home } />
-                </Switch>
-              </div>
+            <main className = { classes.content }>
+              <div className={classes.toolbar} />
+              <Switch>
+                  <Route path = "/projects" component = { Projects } />
+                  <Route path = "/about" component = { About } />
+                  <Route path = "/" component = { Home } />
+              </Switch>
             </main>
           </div>
         </HashRouter>
