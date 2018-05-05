@@ -14,8 +14,8 @@ class Projects extends Component {
   renderProjects() {
     return _.map(this.props.projects, project => {
       return (
-        <Grid item xs = {12} sm = {6} md = {4} lg = {4}>
-          <Project name = { project.name } full_name = { project.full_name } url = { project.html_url } key = { project.id } />
+        <Grid item xs = {12} sm = {6} md = {4} lg = {4} key = { project.id }>
+          <Project project = { project }/>
         </Grid>
       );
     }).reverse();
