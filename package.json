@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ncoop57.github.io/portfolio",
+  "homepage": "https://ncoop57.github.io",
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
     "axios": "^0.18.0",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -b master",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
