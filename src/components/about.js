@@ -18,7 +18,8 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2
   },
   resume: {
-    width: "100%"
+    // width: "100%",
+    // height: 600
   },
   avatar: {
     margin: 10
@@ -66,9 +67,11 @@ const About = props => {
           sidebar!
         </Typography>
 
+        <br />
+
         <iframe
-          src="http://docs.google.com/gview?url=./files/resume.pdf&embedded=true"
-          style={{ width: "100%" }}
+          src="http://docs.google.com/gview?url=https://nathancooper.io/files/resume.pdf&embedded=true"
+          style={{ width: "100%", height: 512 }}
           frameborder="0"
         />
       </Paper>
