@@ -70,7 +70,7 @@ const About = props => {
         <br />
 
         <iframe
-          src="http://docs.google.com/gview?url=https://nathancooper.io/files/resume.pdf&embedded=true"
+          src="https://docs.google.com/gview?url=https://nathancooper.io/files/resume.pdf&embedded=true"
           style={{ width: "100%", height: 512 }}
           frameborder="0"
         />
