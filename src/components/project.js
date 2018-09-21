@@ -26,7 +26,7 @@ const Project = props => {
     project: { name, full_name, html_url, has_pages, owner },
     classes
   } = props;
-  const icon_src = `https://raw.githubusercontent.com/${full_name}/master/icon.png`;
+  const icon_src = `https://raw.githubusercontent.com/${full_name}/website/icon.png`;
   const pages_url = `https://${owner.login}.github.io/${name}`;
   const site = has_pages ? (
     <Button variant="raised" color="secondary" href={pages_url}>
