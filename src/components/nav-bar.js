@@ -1,48 +1,42 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-} from 'material-ui';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "material-ui/styles";
+import { AppBar, Toolbar, Typography } from "material-ui";
+import IconButton from "material-ui/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   navIconHide: {
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
   },
   appBar: {
-    position: 'fixed',
+    position: "fixed",
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    }
+  }
 });
 
 class NavBar extends Component {
   render() {
     const { classes, onToggle } = this.props;
     return (
-      <AppBar
-        className = { classes.appBar }
-      >
+      <AppBar className={classes.appBar} color="default">
         <Toolbar>
           <IconButton
-            color = "inherit"
-            aria-label = "open drawer"
-            onClick = { onToggle }
-            className = { classes.navIconHide }
+            color="inherit"
+            aria-label="open drawer"
+            onClick={onToggle}
+            className={classes.navIconHide}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant = "title" color = "inherit" noWrap>
+          <Typography variant="title" color="inherit" noWrap>
             Nathan Cooper's Portfolio
           </Typography>
         </Toolbar>
@@ -52,7 +46,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(NavBar);

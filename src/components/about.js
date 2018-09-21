@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { CardMedia, Divider, Paper, Typography } from "material-ui";
@@ -65,6 +65,7 @@ const About = props => {
           src="https://docs.google.com/gview?url=https://nathancooper.io/files/resume.pdf&embedded=true"
           style={{ width: "100%", height: 512 }}
           frameborder="0"
+          title="resume"
         />
       </Paper>
     </div>
