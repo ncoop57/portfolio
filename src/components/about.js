@@ -37,7 +37,7 @@ const About = props => {
         </Typography>
         <Divider />
         <br />
-        <Typography component="p">
+        <Typography align="justify" component="p">
           Hi there, my name is Nathan Cooper. I am currently a PhD student at
           the College of William and Mary, studying Software Engineering. I
           always loved playing video games with friends and on my own, so, when
@@ -49,14 +49,14 @@ const About = props => {
           make this passion of mine a career, so, I went for a Bachelor's degree
           in Software Engineering from the University of West Florida and
           graduated from there in Spring of 2018. Though, I switched my career
-          path from games to now education using Software Engineering, I still
-          love playing video games with friends to pass the time. As a hobby, I
-          work on personal projects which you can find a list of, hopefully
-          mostly complete, ones on my Projects page. Below you will find my
-          resume if you are curious in any of my other experiences or
-          accomplishments. If you have any questions or just want to say hi,
-          feel free to use my fully custom made Contact system that you can
-          access using the sidebar!
+          path from games to now using Deep Learning to solve Software
+          Engineering problems, I still love playing video games with friends to
+          pass the time. As a hobby, I work on personal projects which you can
+          find a list of, hopefully mostly complete, ones on my Projects page.
+          Below you will find my resume if you are curious in any of my other
+          experiences or accomplishments. If you have any questions or just want
+          to say hi, feel free to use my fully custom made Contact system that
+          you can access using the sidebar!
         </Typography>
 
         <br />

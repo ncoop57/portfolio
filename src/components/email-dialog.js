@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
+import React, { Component } from "react";
+import { withStyles } from "material-ui/styles";
 import {
   Button,
   Dialog,
@@ -11,31 +11,32 @@ import {
   InputLabel,
   Input,
   InputAdornment,
-  Snackbar,
-} from 'material-ui';
-import IconButton from 'material-ui/IconButton';
-import EmailIcon from '@material-ui/icons/Email';
-import MessageIcon from '@material-ui/icons/Message';
-import CloseIcon from '@material-ui/icons/Close';
+  Snackbar
+} from "material-ui";
+import IconButton from "material-ui/IconButton";
+import EmailIcon from "@material-ui/icons/Email";
+import MessageIcon from "@material-ui/icons/Message";
+import CloseIcon from "@material-ui/icons/Close";
 
-import axios from 'axios';
-import qs from 'qs';
+import axios from "axios";
+import qs from "qs";
 
-const API_URL = "https://script.google.com/macros/s/AKfycbyCZH7bqRLdiiPfRXkIyfDjTOEhpEWFrY7WqTjikrs-VqlycA/exec";
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbyCZH7bqRLdiiPfRXkIyfDjTOEhpEWFrY7WqTjikrs-VqlycA/exec";
 
 const styles = theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    width: "100%"
   },
   margin: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   },
   close: {
     width: theme.spacing.unit * 4,
-    height: theme.spacing.unit * 4,
-  },
+    height: theme.spacing.unit * 4
+  }
 });
 
 class EmailDialog extends Component {
@@ -44,37 +45,42 @@ class EmailDialog extends Component {
 
     this.state = {
       open: false,
-      email: '',
-      message: '',
+      email: "",
+      message: ""
     };
   }
 
   handleSnackOpen = () => {
     this.setState({ open: true });
-  }
+  };
 
   handleSnackClose = () => {
     this.setState({ open: false });
-  }
+  };
 
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState({[name]: value})
+    this.setState({ [name]: value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
     let data = {};
-    data.formDataNameOrder = JSON.stringify({email: [this.state.email], message: [this.state.message], color: ['blue'], name: ['Nathan']});
+    data.formDataNameOrder = JSON.stringify({
+      email: [this.state.email],
+      message: [this.state.message],
+      color: ["blue"],
+      name: ["Nathan"]
+    });
     data.formGoogleSheetName = "responses";
     data.formGoogleSendEmail = "";
     data = qs.stringify(data);
     axios.post(API_URL, data);
 
     this.setState({
-      email: '',
-      message: ''
+      email: "",
+      message: ""
     });
 
     this.props.onClose(); // close dialog box
@@ -87,80 +93,84 @@ class EmailDialog extends Component {
     return (
       <div>
         <Dialog
-          open = { this.props.open }
-          onClose = { this.props.onClose }
-          aria-labelledby = 'form-dialog-title'
+          open={this.props.open}
+          onClose={this.props.onClose}
+          aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id = "form-dialog-title">Contact Me</DialogTitle>
+          <DialogTitle id="form-dialog-title">Contact Me</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              If you want to contact me, please enter a return email along with your message below.
+              If you want to contact me, please enter a return email along with
+              your message below.
             </DialogContentText>
-            <form className = { classes.container } onSubmit = { this.handleSubmit.bind(this) }>
-              <FormControl className = { classes.margin } fullWidth>
-                <FormControl className = { classes.margin }>
-                  <InputLabel htmlFor = "email">Email</InputLabel>
+            <form
+              className={classes.container}
+              onSubmit={this.handleSubmit.bind(this)}
+            >
+              <FormControl className={classes.margin} fullWidth>
+                <FormControl className={classes.margin}>
+                  <InputLabel htmlFor="email">Email</InputLabel>
                   <Input
-                    value = { this.state.email }
-                    type = "email"
-                    id = "email"
-                    name = "email"
-                    startAdornment = {
-                      <InputAdornment position = "start">
+                    value={this.state.email}
+                    type="email"
+                    id="email"
+                    name="email"
+                    startAdornment={
+                      <InputAdornment position="start">
                         <EmailIcon />
                       </InputAdornment>
                     }
-                    onChange = { this.handleChange.bind(this) }
+                    onChange={this.handleChange.bind(this)}
                   />
                 </FormControl>
-                <FormControl className = { classes.margin }>
-                  <InputLabel htmlFor = "message">Message</InputLabel>
+                <FormControl className={classes.margin}>
+                  <InputLabel htmlFor="message">Message</InputLabel>
                   <Input
-                    value = { this.state.message }
-                    type = "text"
-                    id = "message"
-                    name = "message"
+                    value={this.state.message}
+                    type="text"
+                    id="message"
+                    name="message"
                     multiline
-                    rows = "5"
-                    startAdornment = {
-                      <InputAdornment position = "start">
+                    rows="5"
+                    startAdornment={
+                      <InputAdornment position="start">
                         <MessageIcon />
                       </InputAdornment>
                     }
-                    onChange = { this.handleChange.bind(this) }
+                    onChange={this.handleChange.bind(this)}
                   />
                 </FormControl>
               </FormControl>
             </form>
             <DialogActions>
-              <Button onClick = { this.props.onClose } color = "secondary">
+              <Button onClick={this.props.onClose} color="secondary">
                 Cancel
               </Button>
-              <Button onClick = { this.handleSubmit.bind(this) } color = "primary">
+              <Button onClick={this.handleSubmit.bind(this)} color="primary">
                 Send
               </Button>
             </DialogActions>
           </DialogContent>
         </Dialog>
         <Snackbar
-          anchorOrigin = {{
-            vertical: 'bottom',
-            horizontal: 'left',
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left"
           }}
-          open = { this.state.open }
-          autoHideDuration = { 6000 }
-          onClose = { this.handleSnackClose.bind(this) }
-          ContentProps = {{
-            'aria-describedby': 'message-id',
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleSnackClose.bind(this)}
+          ContentProps={{
+            "aria-describedby": "message-id"
           }}
-          message = { <span id = "message-id">Message Sent</span> }
-          action = {[
+          message={<span id="message-id">Message Sent</span>}
+          action={[
             <IconButton
-              key = "close"
-              aria-label = "Close"
-              color = "inherit"
-              className = { classes.close }
-              onClick = { this.handleSnackClose.bind(this) }
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.handleSnackClose.bind(this)}
             >
               <CloseIcon />
             </IconButton>
