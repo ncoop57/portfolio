@@ -30,12 +30,6 @@ class Publications extends Component {
 
   render() {
     const { classes } = this.props;
-    const publication = {
-      title: "A pilot study on introducing continuous integration and delivery into undergraduate software engineering courses",
-      authors: "Brian P Eddy, Norman Wilde, Nathan A Cooper, Bhavyansh Mishra, Valeria S Gamboa, Keenal M Shah, Adrian M Deleon, Nikolai A Shields",
-      conf: "2017 IEEE 30th Conference on Software Engineering Education and Training (CSEE&T)",
-      link: "https://ieeexplore.ieee.org/abstract/document/8166682"
-    };
 
     return (
       <div className="home">
@@ -49,18 +43,9 @@ class Publications extends Component {
               >
                 My Publications
               </Typography>
-              <Divider />
-              <br />
-
-              <Typography className="text-center" component="p">
-                More blog posts coming soon!
-              </Typography>
             </Paper>
           </Grid>
-          {/* <Grid item xs={12} sm={12} md={12} lg={12}> */}
-            {/* <Publication publication={publication} /> */}
-            { this.renderPublications() }
-          {/* </Grid> */}
+          { this.renderPublications() }
         </Grid>
       </div>
     );
