@@ -15,6 +15,7 @@ import NavBar from "./nav-bar";
 import Projects from "./projects";
 import About from "./about";
 import Home from "./home";
+import Publications from "./publications";
 
 // A theme with custom primary and secondary color.
 // It's optional.
@@ -82,6 +83,7 @@ class App extends Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Switch>
+                <Route path="/publications" component={Publications} />
                 <Route path="/projects" component={Projects} />
                 <Route path="/about" component={About} />
                 <Route path="/" component={Home} />

@@ -14,6 +14,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PersonIcon from '@material-ui/icons/Person';
+import LibraryBooks from '@material-ui/icons/LibraryBooks';
 
 import EmailDialog from './email-dialog';
 
@@ -74,6 +75,14 @@ class NavDrawer extends Component {
               <BuildIcon />
             </ListItemIcon>
             <ListItemText primary = "Projects" />
+          </ListItem>
+        </Link>
+        <Link to = "/publications" style = {{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <LibraryBooks />
+            </ListItemIcon>
+            <ListItemText primary = "Publications" />
           </ListItem>
         </Link>
         <Link to = "/about" style = {{ textDecoration: 'none' }}>
