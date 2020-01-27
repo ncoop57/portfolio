@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
@@ -7,7 +8,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Divider,
   Typography
 } from "@material-ui/core";
 
@@ -21,39 +21,34 @@ const styles = {
   }
 };
 
-const Publication = props => {
+const PostCard = props => {
   const {
-    publication: { title, authors, conf, link },
+    post: { title, desc, link },
     classes
   } = props;
 
   return (
     <Card>
       <CardContent>
-        <Typography gutterBottom variant="headline" component="h6">
-          {title}
-        </Typography>
-        <Divider />
-        <br />
-        <Typography align="justify" component="p">
-          Authors: {authors}
+        <Typography gutterBottom variant="headline" component="h2">
+          {_.startCase(_.camelCase(title))}
         </Typography>
         <Typography align="justify" component="p">
-          {conf}
+          {desc}
         </Typography>
       </CardContent>
       <CardActions>
         {/* {site} */}
         <Button variant="contained" color="primary" href={link}>
-          View Paper
+          View Post on Medium
         </Button>
       </CardActions>
     </Card>
   );
 };
 
-Publication.propTypes = {
+PostCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Publication);
+export default withStyles(styles)(PostCard);

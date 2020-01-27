@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/styles';
 import {
   Divider,
   Drawer,
@@ -9,7 +9,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from 'material-ui';
+} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
 import ContactMailIcon from '@material-ui/icons/ContactMail';

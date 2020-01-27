@@ -1,8 +1,13 @@
+import _ from 'lodash';
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import { CardMedia, Divider, Grid, Paper, Typography } from "material-ui";
-import Post from "./post";
+import { withStyles } from "@material-ui/styles";
+import { connect } from 'react-redux';
+import { CardMedia, Divider, Grid, Paper, Typography } from "@material-ui/core";
+import PostCard from "./post_card";
+import { fetchPosts } from '../actions';
+
 
 const styles = theme => ({
   root: {
@@ -13,6 +18,32 @@ const styles = theme => ({
 });
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+  
+  renderPosts() {
+    console.log(this.props.posts)
+    return _.map(this.props.posts, post => {
+      return (
+        <Grid item xs = {12} sm = {12} md = {12} lg = {12} key = { post.name }>
+          <Paper elevation={1}>
+            <Link to = {`/posts/${post.name}`}>
+              {post.name}
+            </Link>
+              {/* <Typography
+                className="text-center"
+                variant="headline"
+                component="h3"
+              >
+                {post.name}
+              </Typography> */}
+          </Paper>
+        </Grid>
+      );
+    });
+  }
+
   render() {
     const { classes } = this.props;
     const post = {
@@ -46,7 +77,7 @@ class Home extends Component {
         </Paper> */}
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Paper className={classes.root} elevation={1}>
+            <Paper elevation={1}>
               <Typography
                 className="text-center"
                 variant="headline"
@@ -71,18 +102,25 @@ class Home extends Component {
             </Paper>
             {/* <Project project={project} /> */}
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Post post={post} />
+          { this.renderPosts() }
+          {/* <Grid item xs={12} sm={12} md={12} lg={12}>
+            <PostCard post={post} />
             {/* <Project project={project} /> */}
-          </Grid>
+          {/* </Grid> */}
         </Grid>
       </div>
     );
   }
 }
 
-Home.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+function mapStateToProps(state) {
+  return { posts: state.posts };
+}
 
-export default withStyles(styles)(Home);
+export default connect(mapStateToProps, { fetchPosts })(Home);
+
+// Home.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
+
+// export default withStyles(styles)(Home);

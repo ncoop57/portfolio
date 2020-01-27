@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import {
   Button,
   Dialog,
@@ -12,8 +12,8 @@ import {
   Input,
   InputAdornment,
   Snackbar
-} from "material-ui";
-import IconButton from "material-ui/IconButton";
+} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import EmailIcon from "@material-ui/icons/Email";
 import MessageIcon from "@material-ui/icons/Message";
 import CloseIcon from "@material-ui/icons/Close";

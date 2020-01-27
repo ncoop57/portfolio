@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import {
   Button,
   Card,
@@ -9,7 +9,7 @@ import {
   CardContent,
   CardMedia,
   Typography
-} from "material-ui";
+} from "@material-ui/core";
 
 const styles = {
   card: {
@@ -29,13 +29,13 @@ const Project = props => {
   const icon_src = `https://raw.githubusercontent.com/${full_name}/website/icon.png`;
   const pages_url = `https://${owner.login}.github.io/${name}`;
   const site = has_pages ? (
-    <Button variant="raised" color="secondary" href={pages_url}>
+    <Button variant="contained" color="secondary" href={pages_url}>
       View Site
     </Button>
   ) : null;
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} fullWidth>
       <CardMedia
         className={classes.media}
         image={icon_src}
@@ -44,13 +44,13 @@ const Project = props => {
         }}
       />
       <CardContent>
-        <Typography gutterBottom variant="headline" component="h2">
+        <Typography gutterBottom variant="headline" component="h4">
           {_.startCase(_.camelCase(name))}
         </Typography>
       </CardContent>
       <CardActions>
         {site}
-        <Button variant="raised" color="primary" href={html_url}>
+        <Button variant="contained" color="primary" href={html_url}>
           View Repo
         </Button>
       </CardActions>

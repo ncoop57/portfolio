@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'material-ui';
+import { Grid, Paper } from '@material-ui/core';
 
 import { fetchProjects } from '../actions';
 import Project from './project';
@@ -24,8 +24,7 @@ class Projects extends Component {
   render() {
     return (
       <div className = "projects" >
-        Projects:
-        <Grid container spacing = {24}>
+        <Grid container direction={'row'} spacing = {24}>
           { this.renderProjects() }
         </Grid>
       </div>

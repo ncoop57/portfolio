@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import _ from 'lodash';
-import { withStyles } from "material-ui/styles";
-import { CardMedia, Divider, Grid, Paper, Typography } from "material-ui";
+import { withStyles } from "@material-ui/styles";
+import { CardMedia, Divider, Grid, Paper, Typography } from "@material-ui/core";
 import Publication from "./publication";
 
 import { fetchPublications } from '../actions';

@@ -5,16 +5,17 @@ import {
   MuiThemeProvider,
   createMuiTheme,
   withStyles
-} from "material-ui/styles";
-import blue from "material-ui/colors/blue";
-import purple from "material-ui/colors/purple";
-import CssBaseline from "material-ui/CssBaseline";
+} from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/blue";
+import purple from "@material-ui/core/colors/purple";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import NavDrawer, { DRAWER_WIDTH } from "./nav-drawer";
 import NavBar from "./nav-bar";
 import Projects from "./projects";
 import About from "./about";
 import Home from "./home";
+import Post from "./post";
 import Publications from "./publications";
 
 // A theme with custom primary and secondary color.
@@ -31,23 +32,23 @@ const theme = createMuiTheme({
       main: purple[500],
       dark: purple[700]
     },
-    type: "dark"
+    type: "light"
   }
 });
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    zIndex: 1,
-    overflow: "hidden",
-    position: "relative",
-    display: "flex",
-    width: "100%"
+    // flexGrow: 1,
+    // zIndex: 1,
+    // overflow: "hidden",
+    // position: "relative",
+    // display: "flex",
+    // width: "100%"
   },
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.dark,
+    // backgroundColor: theme.palette.background.dark,
     padding: theme.spacing.unit * 3,
     [theme.breakpoints.up("md")]: {
       marginLeft: DRAWER_WIDTH
@@ -86,6 +87,7 @@ class App extends Component {
                 <Route path="/publications" component={Publications} />
                 <Route path="/projects" component={Projects} />
                 <Route path="/about" component={About} />
+                <Route path = "/posts/:id" component = { Post } />
                 <Route path="/" component={Home} />
               </Switch>
             </main>

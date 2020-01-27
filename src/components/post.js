@@ -1,58 +1,91 @@
-import _ from "lodash";
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography
-} from "material-ui";
+import { withStyles } from "@material-ui/styles";
+import { Card, CardContent, Divider, Paper, Typography } from "@material-ui/core";
+import ReactMarkdown from "react-markdown"
+import 'github-markdown-css'
+// const ReactMarkdown = require('react-markdown')
 
-const styles = {
-  card: {
-    maxWidth: 345
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
   },
-  media: {
-    height: 0,
-    paddingTop: "100%"
+  avatar: {
+    margin: 10
+  },
+  bigAvatar: {
+    width: 512,
+    height: 512
   }
-};
+});
+class Post extends Component {
+  constructor(props) {
+    super(props);
 
-const Post = props => {
-  const {
-    post: { title, desc, link },
-    classes
-  } = props;
+    const { id } = this.props.match.params;
+    this.state = {post: "text"};
+    // fetch('/blogs/2020-01-26-welcome.md')
+    //     .then((r) => r.text())
+    //     .then(text  => {
+    //       // console.log(text);
+    //       this.state = {post: "text"};
+    //       // <ReactMarkdown source = {text} />
+    //     })
+    // this.state = {post: new Date()};
+  }
 
-  return (
-    <Card>
-      {/* <CardMedia
-        className={classes.media}
-        image={icon_src}
-        onError={e => {
-          console.log("cannot find icon");
-        }}
-      /> */}
-      <CardContent>
-        <Typography gutterBottom variant="headline" component="h2">
-          {_.startCase(_.camelCase(title))}
-        </Typography>
-        <Typography align="justify" component="p">
-          {desc}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        {/* {site} */}
-        <Button variant="raised" color="primary" href={link}>
-          View Post on Medium
-        </Button>
-      </CardActions>
-    </Card>
-  );
-};
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    fetch(`/_posts/${id}`)
+        .then((r) => r.text())
+        .then(text  => {
+          // console.log(text);
+          this.setState({
+            post: text,
+          });
+          // this.state = {post: text};
+          // <ReactMarkdown source = {text} />
+        })
+  }
+
+  render() {
+    const { post } = this.state;
+
+    return (
+      <div className="markdown-body">
+          {/* {id}: */}
+          <Card >
+          <CardContent>
+          <ReactMarkdown source = {post} />
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+}
+
+// const Post = props => {
+//   const { id } = props.match.params;
+//   let input = '# This is a header\n\nAnd this is a *paragraph*'
+//   fetch('/blogs/2020-01-26-welcome.md')
+//         .then((r) => r.text())
+//         .then(text  => {
+//           console.log(text);
+//           input = text
+//           // <ReactMarkdown source = {text} />
+//         })
+//   return (
+//     <div className="post">
+//       <Paper elevation={1}>
+//         {id}:
+        
+//         <ReactMarkdown source = {input} />
+//       </Paper>
+//     </div>
+//   );
+// };
 
 Post.propTypes = {
   classes: PropTypes.object.isRequired
