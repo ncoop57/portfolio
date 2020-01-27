@@ -38,7 +38,7 @@ class Post extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/_posts/${id}`)
+    fetch(`/posts/${id}`)
         .then((r) => r.text())
         .then(text  => {
           // console.log(text);
