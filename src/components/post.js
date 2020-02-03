@@ -1,5 +1,4 @@
 import compose from 'recompose/compose';
-import emoji from "emoji-dictionary";
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
