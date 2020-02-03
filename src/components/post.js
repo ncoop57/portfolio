@@ -1,4 +1,5 @@
 import compose from 'recompose/compose';
+import emoji from "emoji-dictionary";
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
@@ -31,9 +32,9 @@ class Post extends Component {
 
   render() {
     const { post } = this.props
-    const text = post.content !== undefined ? (
-      atob(post.content)
-    ) : null;
+    let text = post.content !== undefined ? (
+      decodeURIComponent(escape(atob(post.content)))
+    ) : "";
 
     return (
       <div className="markdown-body">
