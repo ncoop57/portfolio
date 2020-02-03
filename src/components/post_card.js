@@ -8,6 +8,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Link,
   Typography
 } from "@material-ui/core";
 
@@ -23,27 +24,28 @@ const styles = {
 
 const PostCard = props => {
   const {
-    post: { title, desc, link },
-    classes
+    post: { name },
   } = props;
 
   return (
     <Card>
-      <CardContent>
-        <Typography gutterBottom variant="headline" component="h2">
-          {_.startCase(_.camelCase(title))}
-        </Typography>
-        <Typography align="justify" component="p">
-          {desc}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        {/* {site} */}
-        <Button variant="contained" color="primary" href={link}>
-          View Post on Medium
-        </Button>
-      </CardActions>
-    </Card>
+            <CardContent>
+              <Typography gutterBottom variant="headline" component="h2">
+                
+                {_.startCase(_.camelCase(name))}
+              </Typography>
+              <Typography align="justify" component="p">
+                {/* {desc} */}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Link to = {`/posts/${name}`}>
+                <Button variant="contained" color="primary">
+                  View Post
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
   );
 };
 

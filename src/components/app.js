@@ -32,7 +32,7 @@ const theme = createMuiTheme({
       main: purple[500],
       dark: purple[700]
     },
-    type: "light"
+    type: "dark"
   }
 });
 

@@ -1,10 +1,13 @@
 import _ from 'lodash';
+import compose from 'recompose/compose';
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/styles";
 import { connect } from 'react-redux';
-import { CardMedia, Divider, Grid, Paper, Typography } from "@material-ui/core";
+import { Button,Card,
+  CardActions,
+  CardContent, Divider, Grid, Paper, Typography } from "@material-ui/core";
 import PostCard from "./post_card";
 import { fetchPosts } from '../actions';
 
@@ -25,20 +28,28 @@ class Home extends Component {
   renderPosts() {
     console.log(this.props.posts)
     return _.map(this.props.posts, post => {
+      let name = post.name.split('-')
+      name = name.splice(3).join(' ')
+      name = name.split('.')[0]
       return (
         <Grid item xs = {12} sm = {12} md = {12} lg = {12} key = { post.name }>
-          <Paper elevation={1}>
-            <Link to = {`/posts/${post.name}`}>
-              {post.name}
-            </Link>
-              {/* <Typography
-                className="text-center"
-                variant="headline"
-                component="h3"
-              >
-                {post.name}
-              </Typography> */}
-          </Paper>
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="headline" component="h2">
+                {_.startCase(name)}
+              </Typography>
+              <Typography align="justify" component="p">
+                {/* {desc} */}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Link to = {`/posts/${post.name}`}>
+                <Button variant="contained" color="primary">
+                  View Post
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
         </Grid>
       );
     });
@@ -97,16 +108,12 @@ class Home extends Component {
               <br />
 
               <Typography className="text-center" component="p">
-                More blog posts coming soon!
+                More blog posts coming soon
               </Typography>
             </Paper>
             {/* <Project project={project} /> */}
           </Grid>
           { this.renderPosts() }
-          {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-            <PostCard post={post} />
-            {/* <Project project={project} /> */}
-          {/* </Grid> */}
         </Grid>
       </div>
     );
@@ -117,7 +124,19 @@ function mapStateToProps(state) {
   return { posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(Home);
+Home.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default compose(
+  withStyles(styles),
+  // withWidth(),
+  connect(mapStateToProps, { fetchPosts }),
+)(Home);
+
+// export default connect(mapStateToProps, { fetchPosts })(Home);
+
+// export default withStyles(styles)(Home);
 
 // Home.propTypes = {
 //   classes: PropTypes.object.isRequired
