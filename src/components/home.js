@@ -12,7 +12,6 @@ import {
   CardContent,
   Divider,
   Grid,
-  Paper,
   Typography } from "@material-ui/core";
 import { fetchPosts } from '../actions';
 
@@ -42,6 +41,7 @@ class Home extends Component {
             <CardContent>
               <Typography gutterBottom variant="headline" component="h2">
                 {_.startCase(name)}
+                <Divider />
               </Typography>
             </CardContent>
             <CardActions>
@@ -62,29 +62,31 @@ class Home extends Component {
       <div className="home">
         <Grid container spacing={24}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Paper elevation={1}>
-              <Typography
-                className="text-center"
-                variant="headline"
-                component="h3"
-              >
-                Welcome to my website!
-              </Typography>
-              <Divider />
-              <br />
-              <Typography align="justify" component="p">
-                On this page you find my ramblings, occasional tutorials, and
-                project updates in blog form below. You can use the left
-                navigational panel to find my projects, read my bio, or even
-                contact me through my custom email dialog box.
-              </Typography>
+            <Card elevation={1}>
+              <CardContent>
+                <Typography
+                  className="text-center"
+                  variant="headline"
+                  component="h3"
+                >
+                  Welcome to my website!
+                </Typography>
+                <Divider />
+                <br />
+                <Typography align="justify" component="p">
+                  On this page you find my ramblings, occasional tutorials, and
+                  project updates in blog form below. You can use the left
+                  navigational panel to find my projects, read my bio, or even
+                  contact me through my custom email dialog box.
+                </Typography>
 
-              <br />
+                <br />
 
-              <Typography className="text-center" component="p">
-                More blog posts coming soon
-              </Typography>
-            </Paper>
+                <Typography className="text-center" component="p">
+                  More blog posts coming soon
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
           { this.renderPosts() }
         </Grid>
