@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Card, CardContent, Divider, Paper, Typography } from "@material-ui/core";
 import ReactMarkdown from "react-markdown"
-import 'github-markdown-css'
+import CodeBlock from './code_block';
+import "github-markdown-css"
 // const ReactMarkdown = require('react-markdown')
 
 const styles = theme => ({
@@ -58,7 +59,9 @@ class Post extends Component {
           {/* {id}: */}
           <Card >
           <CardContent>
-          <ReactMarkdown source = {post} />
+          <ReactMarkdown source = {post} renderers={{
+        code: CodeBlock
+      }}/>
           </CardContent>
         </Card>
       </div>
