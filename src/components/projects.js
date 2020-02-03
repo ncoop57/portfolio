@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { fetchProjects } from '../actions';
 import Project from './project';

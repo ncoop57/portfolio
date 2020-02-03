@@ -6,7 +6,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Divider,
   Typography
 } from "@material-ui/core";
@@ -23,8 +22,7 @@ const styles = {
 
 const Publication = props => {
   const {
-    publication: { title, authors, conf, link },
-    classes
+    publication: { title, authors, conf, link }
   } = props;
 
   return (

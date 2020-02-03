@@ -4,12 +4,24 @@ const GITHUB_URL = "https://api.github.com";
 const GITHUB_USER_NAME = "ncoop57";
 const GITHUB_REPO_NAME = "ncoop57.github.io";
 
+export const FETCH_POST = "FETCH_POST";
 export const FETCH_POSTS = "FETCH_POSTS";
 export const FETCH_PROJECTS = "FETCH_PROJECTS";
 
+export function fetchPost(id) {
+  const request = axios.get(
+    `${GITHUB_URL}/repos/${GITHUB_USER_NAME}/${GITHUB_REPO_NAME}/contents/posts/${id}`
+  );
+
+  return {
+    type: FETCH_POST,
+    payload: request
+  };
+}
+
 export function fetchPosts() {
   const request = axios.get(
-    `${GITHUB_URL}/repos/${GITHUB_USER_NAME}/${GITHUB_REPO_NAME}/contents/public/posts`
+    `${GITHUB_URL}/repos/${GITHUB_USER_NAME}/${GITHUB_REPO_NAME}/contents/posts`
   );
 
   return {

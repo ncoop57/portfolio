@@ -3,11 +3,10 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
-import { Card, CardContent, Divider, Paper, Typography } from "@material-ui/core";
+import { Card, CardContent } from "@material-ui/core";
 import ReactMarkdown from "react-markdown"
 import CodeBlock from './code_block';
 import "github-markdown-css"
-import { Base64 } from 'js-base64';
 import { fetchPost } from '../actions';
 
 const styles = theme => ({
@@ -25,34 +24,16 @@ const styles = theme => ({
   }
 });
 class Post extends Component {
-  constructor(props) {
-    super(props);
-
-    const { id } = this.props.match.params;
-    this.state = {post: "text"};
-  }
-
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/posts/${id}`)
-        .then((r) => r.text())
-        .then(text  => {
-          this.setState({
-            post: text,
-          });
-        })
     this.props.fetchPost(id);
   }
 
   render() {
-    // const { post } = this.state;
-
     const { post } = this.props
-    const text = post.content != undefined ? (
+    const text = post.content !== undefined ? (
       atob(post.content)
     ) : null;
-    // if (post.content != undefined)
-    //   console.log("Decoding", atob(post.content))
 
     return (
       <div className="markdown-body">
