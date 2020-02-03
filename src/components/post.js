@@ -1,11 +1,14 @@
+import compose from 'recompose/compose';
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Card, CardContent, Divider, Paper, Typography } from "@material-ui/core";
 import ReactMarkdown from "react-markdown"
 import CodeBlock from './code_block';
 import "github-markdown-css"
-// const ReactMarkdown = require('react-markdown')
+import { Base64 } from 'js-base64';
+import { fetchPost } from '../actions';
 
 const styles = theme => ({
   root: {
@@ -27,14 +30,6 @@ class Post extends Component {
 
     const { id } = this.props.match.params;
     this.state = {post: "text"};
-    // fetch('/blogs/2020-01-26-welcome.md')
-    //     .then((r) => r.text())
-    //     .then(text  => {
-    //       // console.log(text);
-    //       this.state = {post: "text"};
-    //       // <ReactMarkdown source = {text} />
-    //     })
-    // this.state = {post: new Date()};
   }
 
   componentDidMount() {
@@ -42,26 +37,30 @@ class Post extends Component {
     fetch(`/posts/${id}`)
         .then((r) => r.text())
         .then(text  => {
-          // console.log(text);
           this.setState({
             post: text,
           });
-          // this.state = {post: text};
-          // <ReactMarkdown source = {text} />
         })
+    this.props.fetchPost(id);
   }
 
   render() {
-    const { post } = this.state;
+    // const { post } = this.state;
+
+    const { post } = this.props
+    const text = post.content != undefined ? (
+      atob(post.content)
+    ) : null;
+    // if (post.content != undefined)
+    //   console.log("Decoding", atob(post.content))
 
     return (
       <div className="markdown-body">
-          {/* {id}: */}
           <Card >
           <CardContent>
-          <ReactMarkdown source = {post} renderers={{
-        code: CodeBlock
-      }}/>
+            <ReactMarkdown source = {text} renderers={{
+              code: CodeBlock
+            }}/>
           </CardContent>
         </Card>
       </div>
@@ -69,29 +68,16 @@ class Post extends Component {
   }
 }
 
-// const Post = props => {
-//   const { id } = props.match.params;
-//   let input = '# This is a header\n\nAnd this is a *paragraph*'
-//   fetch('/blogs/2020-01-26-welcome.md')
-//         .then((r) => r.text())
-//         .then(text  => {
-//           console.log(text);
-//           input = text
-//           // <ReactMarkdown source = {text} />
-//         })
-//   return (
-//     <div className="post">
-//       <Paper elevation={1}>
-//         {id}:
-        
-//         <ReactMarkdown source = {input} />
-//       </Paper>
-//     </div>
-//   );
-// };
+function mapStateToProps(state) {
+  return { post: state.post };
+}
 
 Post.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Post);
+// export default withStyles(styles)(Post);
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, { fetchPost }),
+)(Post);
