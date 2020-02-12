@@ -8,6 +8,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Divider,
   Typography
 } from "@material-ui/core";
 
@@ -23,16 +24,17 @@ const styles = {
 
 const Project = props => {
   const {
-    project: { name, full_name, html_url, has_pages, owner },
+    project: { name, full_name, html_url, owner, description },
     classes
   } = props;
+  
   const icon_src = `https://raw.githubusercontent.com/${full_name}/website/icon.png`;
   const pages_url = `https://${owner.login}.github.io/${name}`;
-  const site = has_pages ? (
+  const site = (
     <Button variant="contained" color="secondary" href={pages_url}>
       View Site
     </Button>
-  ) : null;
+  )
 
   return (
     <Card className={classes.card} fullWidth>
@@ -46,6 +48,10 @@ const Project = props => {
       <CardContent>
         <Typography gutterBottom variant="headline" component="h4">
           {_.startCase(_.camelCase(name))}
+          <Divider />
+        </Typography>
+        <Typography gutterBottom variant="caption" >
+          {description}
         </Typography>
       </CardContent>
       <CardActions>

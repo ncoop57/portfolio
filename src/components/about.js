@@ -30,7 +30,7 @@ const About = props => {
             console.log("What", e);
           }}
         >
-          <img src="./images/profile.jpg" alt="Nathan Cooper" width="75%" />
+          <img src="./images/profile.jpg" alt="Nathan Cooper" width="50%" />
         </CardMedia>
         <Typography className="text-center" variant="headline" component="h3">
           I'm a nerd.
@@ -38,8 +38,8 @@ const About = props => {
         <Divider />
         <br />
         <Typography align="justify" component="p">
-          Hi there, my name is Nathan Cooper. I am currently a PhD student at
-          the College of William and Mary, studying Software Engineering. I
+          Hi there, my name is Nathan Cooper. I am currently a Ph.D. student at
+          the College of William and Mary, studying Software Engineering, under the mentorship of <a href="http://www.cs.wm.edu/~denys/">Denys Poshyvanyk</a>. I
           always loved playing video games with friends and on my own, so, when
           I learned I could make them myself through programming a computer to
           do it, I fell in love with programming. I wrote my first program when

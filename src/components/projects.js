@@ -13,8 +13,12 @@ class Projects extends Component {
 
   renderProjects() {
     return _.map(this.props.projects, project => {
+      if (project.owner === undefined || project.has_pages === false) {
+        return null;
+      }
+
       return (
-        <Grid item xs = {12} sm = {6} md = {4} lg = {4} key = { project.id }>
+        <Grid item xs = {12} sm = {6} md = {6} lg = {6} key = { project.id }>
           <Project project = { project }/>
         </Grid>
       );
