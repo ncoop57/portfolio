@@ -57,7 +57,6 @@ Post.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-// export default withStyles(styles)(Post);
 export default compose(
   withStyles(styles),
   connect(mapStateToProps, { fetchPost }),

@@ -1,4 +1,6 @@
 import axios from "axios";
+import Parser from 'rss-parser'
+let parser = new Parser();
 
 const GITHUB_URL = "https://api.github.com";
 const GITHUB_USER_NAME = "ncoop57";
@@ -20,8 +22,8 @@ export function fetchPost(id) {
 }
 
 export function fetchPosts() {
-  const request = axios.get(
-    `${GITHUB_URL}/repos/${GITHUB_USER_NAME}/${GITHUB_REPO_NAME}/contents/posts`
+  const request = parser.parseURL(
+    `https://nathancooper.io/i-am-a-nerd/feed.xml`
   );
 
   return {

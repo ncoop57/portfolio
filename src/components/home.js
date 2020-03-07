@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import compose from 'recompose/compose';
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/styles";
 import { connect } from 'react-redux';
@@ -14,7 +13,6 @@ import {
   Grid,
   Typography } from "@material-ui/core";
 import { fetchPosts } from '../actions';
-
 
 const styles = theme => ({
   root: {
@@ -30,31 +28,25 @@ class Home extends Component {
   }
   
   renderPosts() {
-    return _.map(this.props.posts, post => {
-      let name = post.name.split('-')
-      name = name.splice(3).join(' ')
-      name = name.split('.')[0]
-
+    return _.map(this.props.posts.items, post => {
       return (
-        <Grid item xs = {12} sm = {12} md = {12} lg = {12} key = { post.name }>
+        <Grid item xs = {12} sm = {12} md = {12} lg = {12} key = { post.title }>
           <Card>
             <CardContent>
-              <Typography gutterBottom variant="headline" component="h2">
-                {_.startCase(name)}
+              <Typography gutterBottom variant="headline" component="h4">
+                {post.title}
                 <Divider />
               </Typography>
             </CardContent>
             <CardActions>
-              <Link to = {`/posts/${post.name}`}>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" href={post.link}>
                   View Post
                 </Button>
-              </Link>
             </CardActions>
           </Card>
         </Grid>
       );
-    }).reverse();
+    });
   }
 
   render() {

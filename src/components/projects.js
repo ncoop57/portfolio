@@ -18,7 +18,7 @@ class Projects extends Component {
       }
 
       return (
-        <Grid item xs = {12} sm = {6} md = {6} lg = {6} key = { project.id }>
+        <Grid item xs = {12} sm = {6} md = {6} lg = {3} key = { project.id }>
           <Project project = { project }/>
         </Grid>
       );
