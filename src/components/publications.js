@@ -16,7 +16,6 @@ const styles = theme => ({
 
 class Publications extends Component {
   renderPublications() {
-    console.log(ALL_PUBLICATIONS)
     return _.map(ALL_PUBLICATIONS, publication => {
       return (
         <Grid item xs={12} sm={12} md={12} lg={12} key = { publication.id }>

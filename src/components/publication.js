@@ -34,7 +34,7 @@ const Publication = props => {
         <Divider />
         <br />
         <Typography align="justify" component="p">
-          Authors: {authors}
+          Authors: <span dangerouslySetInnerHTML={{__html:authors}} />
         </Typography>
         <Typography align="justify" component="p">
           {conf}

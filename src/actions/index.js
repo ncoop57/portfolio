@@ -1,5 +1,5 @@
 import axios from "axios";
-import Parser from 'rss-parser'
+import Parser from 'rss-parser/dist/rss-parser.min.js'
 let parser = new Parser();
 
 const GITHUB_URL = "https://api.github.com";
