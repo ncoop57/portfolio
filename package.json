@@ -7,7 +7,7 @@
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^1.0.0-beta.43",
     "@material-ui/styles": "^4.9.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "browserfs": "^1.4.3",
     "filer": "^1.1.2",
     "fs-web": "^1.0.1",
