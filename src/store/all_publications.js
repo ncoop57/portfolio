@@ -1,5 +1,19 @@
 export const ALL_PUBLICATIONS = [
     {
+        title: "It Takes Two to Tango: Combining Visual and Textual Information for Detecting Duplicate Video-Based Bug Reports",
+        authors: "<b>Nathan A. Cooper</b>, Carlos Bernal-Cárdenas, Oscar Chaparro, Kevin P. Moran, and Denys Poshyvanyk",
+        conf: "in Proceedings of the 43nd IEEE/ACM International Conference on Software Engineering (ICSE'21)",
+        link: "https://arxiv.org/abs/2101.09194",
+        id: 3
+    },
+    {
+        title: "Studying the Usage of Text-To-Text Transfer Transformer to Support Code-Related Tasks",
+        authors: "Antonio Mastropaolo, Simone Scalabrino, <b>Nathan A. Cooper</b>, David Palacio, Denys Poshyvanyk, Rocco Oliveto, and Gabriele Bavota",
+        conf: "in Proceedings of the 43nd IEEE/ACM International Conference on Software Engineering (ICSE'21)",
+        link: "https://nathancooper.io/#/",
+        id: 3
+    },
+    {
         title: "Translating Video Recordings of Mobile Apps into Replayable Scenarios",
         authors: "Carlos Bernal-Cárdenas, <b>Nathan A. Cooper</b>, Kevin P. Moran, Oscar Chaparro, Adrian Marcus, and Denys Poshyvanyk",
         conf: "in Proceedings of the 42nd IEEE/ACM International Conference on Software Engineering (ICSE'20)",
