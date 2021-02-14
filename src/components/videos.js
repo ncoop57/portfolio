@@ -9,44 +9,61 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardHeader,
+  CardMedia,
   Divider,
   Grid,
   Typography
 } from "@material-ui/core";
-import { fetchPosts } from '../actions';
+import { fetchVideos } from '../actions';
 
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%"
   }
 });
 
-class Home extends Component {
+class Videos extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchVideos();
   }
 
   renderPosts() {
-    console.log(this.props.posts)
-    return _.map(this.props.posts.items, post => {
+    console.log(this.props.videos)
+    return _.map(this.props.videos.items, video => {
+      console.log(video)
+      let video_id = video.id.videoId
+      let thumb_url = video.snippet.thumbnails.high.url
+      console.log(thumb_url)
       return (
-        <Grid item xs={12} sm={12} md={12} lg={12} key={post.title}>
+        <Grid item xs={12} sm={12} md={12} lg={12} key={video.snippet.title}>
           <Card>
+            <CardMedia
+              className={this.props.classes.media}
+              image={thumb_url}
+            />
             <CardContent>
+              <iframe
+                src={`http://www.youtube.com/embed/${video_id}`}
+                frameBorder="0" allowFullScreen className="video"></iframe>
               <Typography gutterBottom variant="headline" component="h4">
-                {post.title}
+                {video.snippet.title}
                 <Divider />
               </Typography>
             </CardContent>
             <CardActions>
-              <Button variant="contained" color="primary" href={post.link}>
-                View Post
+              <Button variant="contained" color="primary" href={`http://www.youtube.com/watch?v=${video_id}`}>
+                View Video
                 </Button>
             </CardActions>
           </Card>
-        </Grid>
+        </Grid >
       );
     });
   }
@@ -63,21 +80,7 @@ class Home extends Component {
                   variant="headline"
                   component="h3"
                 >
-                  Welcome to my website!
-                </Typography>
-                <Divider />
-                <br />
-                <Typography align="justify" component="p">
-                  On this page you find my ramblings, occasional tutorials, and
-                  project updates in blog form below. You can use the left
-                  navigational panel to find my projects, read my bio, or even
-                  contact me through my custom email dialog box.
-                </Typography>
-
-                <br />
-
-                <Typography className="text-center" component="p">
-                  More blog posts coming soon
+                  My Videos
                 </Typography>
               </CardContent>
             </Card>
@@ -90,14 +93,15 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return { posts: state.posts };
+  // console.log(state)
+  return { videos: state.videos };
 }
 
-Home.propTypes = {
+Videos.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps, { fetchPosts }),
-)(Home);
+  connect(mapStateToProps, { fetchVideos }),
+)(Videos);

@@ -4,14 +4,14 @@ export const ALL_PUBLICATIONS = [
         authors: "<b>Nathan A. Cooper</b>, Carlos Bernal-Cárdenas, Oscar Chaparro, Kevin P. Moran, and Denys Poshyvanyk",
         conf: "in Proceedings of the 43nd IEEE/ACM International Conference on Software Engineering (ICSE'21)",
         link: "https://arxiv.org/abs/2101.09194",
-        id: 3
+        id: 5
     },
     {
         title: "Studying the Usage of Text-To-Text Transfer Transformer to Support Code-Related Tasks",
         authors: "Antonio Mastropaolo, Simone Scalabrino, <b>Nathan A. Cooper</b>, David Palacio, Denys Poshyvanyk, Rocco Oliveto, and Gabriele Bavota",
         conf: "in Proceedings of the 43nd IEEE/ACM International Conference on Software Engineering (ICSE'21)",
-        link: "https://nathancooper.io/#/",
-        id: 3
+        link: "https://arxiv.org/abs/2102.02017",
+        id: 4
     },
     {
         title: "Translating Video Recordings of Mobile Apps into Replayable Scenarios",

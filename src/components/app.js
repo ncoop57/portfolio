@@ -17,6 +17,7 @@ import About from "./about";
 import Home from "./home";
 import Post from "./post";
 import Publications from "./publications";
+import Videos from "./videos";
 
 // A theme with custom primary and secondary color.
 // It's optional.
@@ -84,10 +85,11 @@ class App extends Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Switch>
+                <Route path="/videos" component={Videos} />
                 <Route path="/publications" component={Publications} />
                 <Route path="/projects" component={Projects} />
                 <Route path="/about" component={About} />
-                <Route path = "/posts/:id" component = { Post } />
+                <Route path="/posts/:id" component={Post} />
                 <Route path="/" component={Home} />
               </Switch>
             </main>

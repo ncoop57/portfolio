@@ -15,6 +15,7 @@ import BuildIcon from '@material-ui/icons/Build';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PersonIcon from '@material-ui/icons/Person';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
+import VideoLibrary from '@material-ui/icons/VideoLibrary';
 
 import EmailDialog from './email-dialog';
 
@@ -58,46 +59,54 @@ class NavDrawer extends Component {
 
     const drawer = (
       <div>
-        <div className = { classes.drawerHeader }>
+        <div className={classes.drawerHeader}>
         </div>
         <Divider />
-        <Link to = "/" style = {{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary = "Home" />
+            <ListItemText primary="Home" />
           </ListItem>
         </Link>
-        <Link to = "/projects" style = {{ textDecoration: 'none' }}>
+        <Link to="/videos" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <VideoLibrary />
+            </ListItemIcon>
+            <ListItemText primary="Videos" />
+          </ListItem>
+        </Link>
+        <Link to="/projects" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <BuildIcon />
             </ListItemIcon>
-            <ListItemText primary = "Projects" />
+            <ListItemText primary="Projects" />
           </ListItem>
         </Link>
-        <Link to = "/publications" style = {{ textDecoration: 'none' }}>
+        <Link to="/publications" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <LibraryBooks />
             </ListItemIcon>
-            <ListItemText primary = "Publications" />
+            <ListItemText primary="Publications" />
           </ListItem>
         </Link>
-        <Link to = "/about" style = {{ textDecoration: 'none' }}>
+        <Link to="/about" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary = "About Me" />
+            <ListItemText primary="About Me" />
           </ListItem>
         </Link>
-        <ListItem button onClick = { this.handleOpen }>
+        <ListItem button onClick={this.handleOpen}>
           <ListItemIcon>
             <ContactMailIcon />
           </ListItemIcon>
-          <ListItemText primary = "Contact" />
+          <ListItemText primary="Contact" />
         </ListItem>
       </div>
     );
@@ -106,30 +115,30 @@ class NavDrawer extends Component {
       <div>
         <Hidden mdUp>
           <Drawer
-            variant = "temporary"
-            anchor = "left"
-            open = { open_drawer }
-            onClose = { onToggle }
-            classes = {{
+            variant="temporary"
+            anchor="left"
+            open={open_drawer}
+            onClose={onToggle}
+            classes={{
               paper: classes.drawerPaper,
             }}
           >
-            { drawer }
+            {drawer}
           </Drawer>
         </Hidden>
-        <Hidden smDown implementation = "css">
+        <Hidden smDown implementation="css">
           <Drawer
-            variant = "permanent"
-            open = { open_drawer }
-            onClose = { onToggle }
-            classes = { {
+            variant="permanent"
+            open={open_drawer}
+            onClose={onToggle}
+            classes={{
               paper: classes.drawerPaper,
-            } }
+            }}
           >
-            { drawer }
+            {drawer}
           </Drawer>
         </Hidden>
-        <EmailDialog open = { this.state.open } onClose = { this.handleClose.bind(this) } />
+        <EmailDialog open={this.state.open} onClose={this.handleClose.bind(this)} />
       </div>
     );
   }
