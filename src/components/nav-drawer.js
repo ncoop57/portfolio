@@ -70,14 +70,14 @@ class NavDrawer extends Component {
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
-        <Link to="/videos" style={{ textDecoration: 'none' }}>
+        <a href="www.google.com" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
               <VideoLibrary />
             </ListItemIcon>
             <ListItemText primary="Videos" />
           </ListItem>
-        </Link>
+        </a>
         <Link to="/projects" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>

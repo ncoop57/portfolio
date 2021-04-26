@@ -85,7 +85,6 @@ class App extends Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Switch>
-                <Route path="/videos" component={Videos} />
                 <Route path="/publications" component={Publications} />
                 <Route path="/projects" component={Projects} />
                 <Route path="/about" component={About} />

@@ -5,16 +5,12 @@ import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/styles";
 import { connect } from 'react-redux';
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
-  CardHeader,
-  CardMedia,
-  Divider,
   Grid,
   Typography
 } from "@material-ui/core";
+import Video from './video';
 import { fetchVideos } from '../actions';
 
 const styles = theme => ({
@@ -34,37 +30,15 @@ class Videos extends Component {
     this.props.fetchVideos();
   }
 
-  renderPosts() {
-    console.log(this.props.videos)
+  renderVideos() {
     return _.map(this.props.videos.items, video => {
-      console.log(video)
-      let video_id = video.id.videoId
-      let thumb_url = video.snippet.thumbnails.high.url
-      console.log(thumb_url)
-      return (
-        <Grid item xs={12} sm={12} md={12} lg={12} key={video.snippet.title}>
-          <Card>
-            <CardMedia
-              className={this.props.classes.media}
-              image={thumb_url}
-            />
-            <CardContent>
-              <iframe
-                src={`http://www.youtube.com/embed/${video_id}`}
-                frameBorder="0" allowFullScreen className="video"></iframe>
-              <Typography gutterBottom variant="headline" component="h4">
-                {video.snippet.title}
-                <Divider />
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button variant="contained" color="primary" href={`http://www.youtube.com/watch?v=${video_id}`}>
-                View Video
-                </Button>
-            </CardActions>
-          </Card>
-        </Grid >
-      );
+      if (video.id.videoId) {
+        return (
+          <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Video video={video} />
+          </Grid>
+        );
+      }
     });
   }
 
@@ -85,7 +59,7 @@ class Videos extends Component {
               </CardContent>
             </Card>
           </Grid>
-          {this.renderPosts()}
+          {this.renderVideos()}
         </Grid>
       </div>
     );
@@ -93,7 +67,6 @@ class Videos extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state)
   return { videos: state.videos };
 }
 

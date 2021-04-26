@@ -29,7 +29,6 @@ class Home extends Component {
   }
 
   renderPosts() {
-    console.log(this.props.posts)
     return _.map(this.props.posts.items, post => {
       return (
         <Grid item xs={12} sm={12} md={12} lg={12} key={post.title}>
