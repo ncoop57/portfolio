@@ -85,6 +85,11 @@ class App extends Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Switch>
+                <Route exact path="/email" render={() => (window.location = "mailto:nacooper01@email.wm.edu")} />
+                <Route exact path="/videos" render={() => (window.location = "https://www.youtube.com/channel/UCKfOCnojK5YV7_hdPjAtY7Q")} />
+                <Route exact path="/twitter" render={() => (window.location = "https://twitter.com/ncooper57")} />
+                <Route exact path="/github" render={() => (window.location = "https://github.com/ncoop57")} />
+                <Route exact path="/linkedin" render={() => (window.location = "https://www.linkedin.com/in/nathan-cooper-820292106/")} />
                 <Route path="/publications" component={Publications} />
                 <Route path="/projects" component={Projects} />
                 <Route path="/about" component={About} />

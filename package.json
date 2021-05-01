@@ -4,31 +4,31 @@
   "private": true,
   "homepage": "https://ncoop57.github.io",
   "dependencies": {
-    "@material-ui/core": "^4.3.2",
-    "@material-ui/icons": "^1.0.0-beta.43",
-    "@material-ui/styles": "^4.9.0",
-    "axios": "^0.18.0",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.4",
+    "axios": "^0.21.1",
     "browserfs": "^1.4.3",
-    "filer": "^1.1.2",
+    "filer": "^1.2.0",
     "fs-web": "^1.0.1",
-    "gh-pages": "^1.1.0",
-    "github-markdown-css": "^3.0.1",
-    "jssoup": "0.0.10",
+    "gh-pages": "^3.1.0",
+    "github-markdown-css": "^4.0.0",
+    "jssoup": "0.0.12",
     "list-react-files": "^0.2.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.21",
     "material-ui": "^1.0.0-beta.44",
     "material-ui-icons": "^1.0.0-beta.36",
-    "qs": "^6.5.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-markdown": "^4.3.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
-    "react-syntax-highlighter": "^12.2.1",
-    "redux": "^4.0.0",
-    "redux-promise": "^0.5.3",
-    "rss-parser": "^3.7.5"
+    "qs": "^6.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-markdown": "^6.0.1",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-syntax-highlighter": "^15.4.3",
+    "redux": "^4.1.0",
+    "redux-promise": "^0.6.0",
+    "rss-parser": "^3.12.0"
   },
   "scripts": {
     "predeploy": "yarn run build",
@@ -37,5 +37,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

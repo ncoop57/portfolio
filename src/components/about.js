@@ -55,8 +55,8 @@ const About = props => {
           find a list of, hopefully mostly complete, ones on my Projects page.
           Below you will find my resume if you are curious in any of my other
           experiences or accomplishments. If you have any questions or just want
-          to say hi, feel free to use my fully custom made Contact system that
-          you can access using the sidebar!
+          to say hi, feel free to connect via email at <a href="mailto:nacooper01@email.wm.edu">nacooper01@email.wm.edu</a>,
+          Twitter <a href="https://twitter.com/ncooper57">@ncooper57</a>, or <a href="https://www.linkedin.com/in/nathan-cooper-820292106/">LinkedIn</a>!
         </Typography>
 
         <br />

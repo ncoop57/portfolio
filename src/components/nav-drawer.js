@@ -9,13 +9,17 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography
 } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home'
 import BuildIcon from '@material-ui/icons/Build';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PersonIcon from '@material-ui/icons/Person';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
-import VideoLibrary from '@material-ui/icons/VideoLibrary';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 import EmailDialog from './email-dialog';
 
@@ -70,14 +74,6 @@ class NavDrawer extends Component {
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
-        <a href="www.google.com" style={{ textDecoration: 'none' }}>
-          <ListItem button>
-            <ListItemIcon>
-              <VideoLibrary />
-            </ListItemIcon>
-            <ListItemText primary="Videos" />
-          </ListItem>
-        </a>
         <Link to="/projects" style={{ textDecoration: 'none' }}>
           <ListItem button>
             <ListItemIcon>
@@ -102,12 +98,56 @@ class NavDrawer extends Component {
             <ListItemText primary="About Me" />
           </ListItem>
         </Link>
-        <ListItem button onClick={this.handleOpen}>
-          <ListItemIcon>
-            <ContactMailIcon />
-          </ListItemIcon>
-          <ListItemText primary="Contact" />
-        </ListItem>
+        <Link to="/email" target="_blank" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <ContactMailIcon />
+            </ListItemIcon>
+            <ListItemText primary="Contact Me" />
+          </ListItem>
+        </Link>
+        <div className={classes.drawerHeader}>
+        </div>
+        <Divider />
+        <Typography
+          className="text-center"
+          variant="headline"
+          component="h4"
+        >
+          Social Media
+        </Typography>
+        <Link to="/videos" target="_blank" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <YouTubeIcon />
+            </ListItemIcon>
+            <ListItemText primary="YouTube" />
+          </ListItem>
+        </Link>
+        <Link to="/twitter" target="_blank" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <TwitterIcon />
+            </ListItemIcon>
+            <ListItemText primary="Twitter" />
+          </ListItem>
+        </Link>
+        <Link to="/github" target="_blank" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <GitHubIcon />
+            </ListItemIcon>
+            <ListItemText primary="GitHub" />
+          </ListItem>
+        </Link>
+        <Link to="/linkedin" target="_blank" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <LinkedInIcon />
+            </ListItemIcon>
+            <ListItemText primary="LinkedIn" />
+          </ListItem>
+        </Link>
       </div>
     );
 
@@ -138,7 +178,6 @@ class NavDrawer extends Component {
             {drawer}
           </Drawer>
         </Hidden>
-        <EmailDialog open={this.state.open} onClose={this.handleClose.bind(this)} />
       </div>
     );
   }
